@@ -1,0 +1,40 @@
+import PySimpleGUI as sg
+
+# Define the layout of the GUI
+layout = [
+    [sg.Text('Welcome to the Waste Tracker App')],
+    [sg.Button('Get Started')]
+]
+
+# Create the window
+window = sg.Window('Waste Tracker', layout)
+
+# Event loop to process events and interact with the GUI
+while True:
+    event, values = window.read()
+
+    # Close the window if the user clicks the close button or presses Esc
+    if event == sg.WINDOW_CLOSED or event == 'Cancel':
+        break
+
+    # Open the onboarding tutorial when the user clicks "Get Started"
+    if event == 'Get Started':
+        tutorial_layout = [
+            [sg.Text('This is the onboarding tutorial')],
+            [sg.Button('Next')]
+        ]
+        tutorial_window = sg.Window('Onboarding Tutorial', tutorial_layout)
+
+        while True:
+            tutorial_event, tutorial_values = tutorial_window.read()
+
+            if tutorial_event == sg.WINDOW_CLOSED or tutorial_event == 'Cancel':
+                break
+
+            # Continue to the next step of the tutorial
+            if tutorial_event == 'Next':
+                # Implement logic for each step of the tutorial
+
+        tutorial_window.close()
+
+window.close()
